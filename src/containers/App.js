@@ -21,6 +21,7 @@ class App extends Component {
 				<div className="app">
 					<NavBar />
 					<Route exact path="/" render={(renderProps) => <PostsPage posts={this.state.posts} />} />
+
 					{/* <Route exact path="/posts/:id" render={renderProps => <h1>PostsPage</h1>}/> */}
 					<Route exact path="/me" render={(renderProps) => <h1>ProfilePage</h1>} />
 				</div>
