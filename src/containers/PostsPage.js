@@ -8,6 +8,8 @@ const PostsPage = (props) => {
 	// 	return this.props.posts.map((post) => <Post post={post} />);
 	// };
 
+	
+
 	return (
 		<div classname="ui four column grid">
 			{props.posts.map((post) => (
