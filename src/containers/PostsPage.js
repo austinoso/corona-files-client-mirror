@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import Post from './components/Post.js';
+import Post from '../components/Post.js';
 
-export default function PostsPage() {
+const PostsPage = (props) => {
 	// const [ votes, newVotes ] = useState(0)
 	//pass votes prop to votes.js
-	mapOverPosts = (props) => {
-		props.posts.map((post) => <Post post={post} />);
-	};
+	// mapOverPosts = () => {
+	// 	return this.props.posts.map((post) => <Post post={post} />);
+	// };
 
 	return (
-		<div>
-			<h1>PostsPage</h1>
-			{mapOverPosts()}
+		<div classname="ui four column grid">
+			{props.posts.map((post) => (
+				<Post post={post} />
+			))}
 		</div>
 	);
-}
+};
+
+export default PostsPage;
