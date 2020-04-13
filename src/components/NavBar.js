@@ -5,9 +5,9 @@ export default function NavBar() {
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg navbar-light bg-light">
-				<a className="navbar-brand" href="#">
+				<Link to="/" className="navbar-brand">
 					Corona Files
-				</a>
+				</Link>
 				<button
 					className="navbar-toggler"
 					type="button"
