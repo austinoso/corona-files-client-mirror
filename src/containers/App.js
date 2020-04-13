@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NewPost from '../components/NewPost.js';
 import RegisterPage from './RegisterPage';
+import LoginPage from './LoginPage';
 
 class App extends Component {
 	state = {
@@ -33,11 +34,7 @@ class App extends Component {
 						path="/register"
 						render={(renderProps) => <RegisterPage />}
 					/>
-					<Route
-						exact
-						path="/login"
-						render={(renderProps) => <h1>Login Page</h1>}
-					/>
+					<Route exact path="/login" render={(renderProps) => <LoginPage />} />
 				</div>
 			</Router>
 		);
