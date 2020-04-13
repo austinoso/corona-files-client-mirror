@@ -36,6 +36,7 @@ const LoginForm = () => {
 					<input type="submit" className="btn btn-primary" />
 				</form>
 			</div>
+
 		</div>
 	);
 };
