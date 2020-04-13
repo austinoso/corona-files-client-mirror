@@ -3,7 +3,9 @@ import '../App.css';
 import PostsPage from './PostsPage.js';
 import NavBar from '../components/NavBar.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NewPost from '../components/NewPost.js'
+import NewPost from '../components/NewPost.js';
+import RegisterPage from './RegisterPage';
+import LoginPage from './LoginPage';
 
 class App extends Component {
 	state = {
@@ -21,37 +23,22 @@ class App extends Component {
 			<Router>
 				<div className="app">
 					<NavBar />
-					<Route exact path="/" render={(renderProps) => <PostsPage posts={this.state.posts} />} />
-					<Route exact path="/newpost" render={(renderProps) => <NewPost />} />
+					<Route
+						exact
+						path="/"
+						render={(renderProps) => <PostsPage posts={this.state.posts} />}
+					/>
 					{/* <Route exact path="/posts/:id" render={renderProps => <h1>PostsPage</h1>}/> */}
-					<Route exact path="/me" render={(renderProps) => <h1>ProfilePage</h1>} />
+					<Route
+						exact
+						path="/register"
+						render={(renderProps) => <RegisterPage />}
+					/>
+					<Route exact path="/login" render={(renderProps) => <LoginPage />} />
 				</div>
 			</Router>
 		);
 	}
 }
-
-// class App extends Component {
-
-// 	state = {
-// 	  movies: {
-// 		1: { id: 1, title: 'A River Runs Through It' },
-// 		2: { id: 2, title: 'Se7en' },
-// 		3: { id: 3, title: 'Inception' }
-// 	  }
-// 	}
-
-// 	render() {
-// 	  return (
-// 		<Router>
-// 		  <div>
-// 			<NavBar />
-// 			<Route exact path="/" render={() => <div>Home</div>} />
-// 			<Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} />
-// 		  </div>
-// 		</Router>
-// 	  );
-// 	}
-//   }
 
 export default App;
