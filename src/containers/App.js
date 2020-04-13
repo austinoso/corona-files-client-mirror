@@ -10,10 +10,18 @@ import LoginPage from './LoginPage';
 class App extends Component {
 	state = {
 		posts: [],
+		username: localStorage.username,
 	};
 
 	componentDidMount() {
-		fetch(`http://localhost:3000/posts`)
+		const configObj = {
+			method: 'GET',
+			headers: {
+				Authorization: `Bearer ${localStorage.token}`,
+			},
+		};
+		console.log(configObj);
+		fetch(`http://localhost:3000/posts`, configObj)
 			.then((resp) => resp.json())
 			.then((posts) => this.setState({ posts }));
 	}
