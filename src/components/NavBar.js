@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NavBar() {
@@ -28,16 +28,22 @@ export default function NavBar() {
 						</li>
 					</ul>
 					<ul className="navbar-nav ml-auto">
-						<li className="nav-item">
-							<Link to="/login" className="nav-link">
-								Login
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link to="/register" className="nav-link">
-								Register
-							</Link>
-						</li>
+						{!!localStorage.username ? (
+							<p>{localStorage.username}</p>
+						) : (
+							<>
+								<li className="nav-item">
+									<Link to="/login" className="nav-link">
+										Login
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link to="/register" className="nav-link">
+										Register
+									</Link>
+								</li>
+							</>
+						)}
 					</ul>
 				</div>
 			</nav>
