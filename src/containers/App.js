@@ -3,7 +3,7 @@ import '../App.css';
 import PostsPage from './PostsPage.js';
 import NavBar from '../components/NavBar.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NewPost from '../components/NewPost.js'
+import NewPost from '../components/NewPost.js';
 
 class App extends Component {
 	state = {
@@ -21,16 +21,11 @@ class App extends Component {
 			<Router>
 				<div className="app">
 					<NavBar />
-<<<<<<< HEAD
 					<Route
 						exact
 						path="/"
 						render={(renderProps) => <PostsPage posts={this.state.posts} />}
 					/>
-=======
-					<Route exact path="/" render={(renderProps) => <PostsPage posts={this.state.posts} />} />
-					<Route exact path="/newpost" render={(renderProps) => <NewPost />} />
->>>>>>> master
 					{/* <Route exact path="/posts/:id" render={renderProps => <h1>PostsPage</h1>}/> */}
 					<Route
 						exact
