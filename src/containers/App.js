@@ -20,36 +20,26 @@ class App extends Component {
 			<Router>
 				<div className="app">
 					<NavBar />
-					<Route exact path="/" render={(renderProps) => <PostsPage posts={this.state.posts} />} />
+					<Route
+						exact
+						path="/"
+						render={(renderProps) => <PostsPage posts={this.state.posts} />}
+					/>
 					{/* <Route exact path="/posts/:id" render={renderProps => <h1>PostsPage</h1>}/> */}
-					<Route exact path="/me" render={(renderProps) => <h1>ProfilePage</h1>} />
+					<Route
+						exact
+						path="/login"
+						render={(renderProps) => <h1>Login Page</h1>}
+					/>
+					<Route
+						exact
+						path="/register"
+						render={(renderProps) => <h1>Register Page</h1>}
+					/>
 				</div>
 			</Router>
 		);
 	}
 }
-
-// class App extends Component {
-
-// 	state = {
-// 	  movies: {
-// 		1: { id: 1, title: 'A River Runs Through It' },
-// 		2: { id: 2, title: 'Se7en' },
-// 		3: { id: 3, title: 'Inception' }
-// 	  }
-// 	}
-
-// 	render() {
-// 	  return (
-// 		<Router>
-// 		  <div>
-// 			<NavBar />
-// 			<Route exact path="/" render={() => <div>Home</div>} />
-// 			<Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} />
-// 		  </div>
-// 		</Router>
-// 	  );
-// 	}
-//   }
 
 export default App;
