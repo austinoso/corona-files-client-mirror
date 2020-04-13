@@ -4,6 +4,7 @@ import PostsPage from './PostsPage.js';
 import NavBar from '../components/NavBar.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NewPost from '../components/NewPost.js';
+import RegisterPage from './RegisterPage';
 
 class App extends Component {
 	state = {
@@ -29,13 +30,13 @@ class App extends Component {
 					{/* <Route exact path="/posts/:id" render={renderProps => <h1>PostsPage</h1>}/> */}
 					<Route
 						exact
-						path="/login"
-						render={(renderProps) => <h1>Login Page</h1>}
+						path="/register"
+						render={(renderProps) => <RegisterPage />}
 					/>
 					<Route
 						exact
-						path="/register"
-						render={(renderProps) => <h1>Register Page</h1>}
+						path="/login"
+						render={(renderProps) => <h1>Login Page</h1>}
 					/>
 				</div>
 			</Router>
