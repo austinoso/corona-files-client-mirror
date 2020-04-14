@@ -32,7 +32,6 @@ class App extends Component {
 	setUser = ({ jwt, user }) => {
 		localStorage.setItem('token', jwt);
 		localStorage.setItem('username', user.username);
-		console.log(localStorage.username);
 
 		this.setState({
 			user: {
