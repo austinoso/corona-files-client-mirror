@@ -6,11 +6,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NewPost from '../components/NewPost.js';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
+import UserProfiles from './UserProfiles.js'
 
 
 class App extends Component {
 	state = {
 		posts: [],
+		profiles: [],
 		username: localStorage.username,
 	};
 
@@ -25,6 +27,12 @@ class App extends Component {
 		fetch(`http://localhost:3000/posts`, configObj)
 			.then((resp) => resp.json())
 			.then((posts) => this.setState({ posts }));
+	}
+
+	componentDidMount() {
+		fetch(`http://localhost:3000/user_profiles`)
+			.then((resp) => resp.json())
+			.then((profiles) => this.setState({ profiles }));
 	}
 
 	render() {
@@ -46,6 +54,7 @@ class App extends Component {
 					/>
 					<Route exact path="/login" render={(renderProps) => 
 					<LoginPage />} />
+					<UserProfiles profiles={this.state.profiles} />
 							
 				</div>
 			</Router>
