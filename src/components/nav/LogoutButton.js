@@ -8,7 +8,7 @@ export default function LogoutButton({ setUser }) {
 	};
 
 	return (
-		<Button onClick={handleClick} variant="primary">
+		<Button onClick={handleClick} variant="outline-danger">
 			{' '}
 			Log Out
 		</Button>

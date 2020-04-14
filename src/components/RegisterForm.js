@@ -12,7 +12,6 @@ const RegisterForm = ({ setUser }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log({ username, password });
 
 		fetch('http://localhost:3000/api/v1/users', {
 			method: 'POST',
@@ -39,7 +38,7 @@ const RegisterForm = ({ setUser }) => {
 		<div>
 			{redirect ? <Redirect to="/" /> : null}
 
-			<Form onSubmit={(event) => handleSubmit(event)}>
+			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="formUsername">
 					<Form.Label>Email address</Form.Label>
 					<Form.Control

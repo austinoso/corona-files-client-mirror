@@ -1,23 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
-import LogoutButton from './nav/LogoutButton';
+import LoggedInUser from './nav/LoggedInUser';
 
 export default function NavBar({ user, setUser }) {
 	return (
 		<Navbar bg="light" expand="lg">
 			<Navbar.Brand href="/">Corona Files</Navbar.Brand>
 			<Navbar.Toggle />
-			<Nav className="mr-auto">
-				<Nav.Link href="/">Home</Nav.Link>
-			</Nav>
 			<Navbar.Collapse className="justify-content-end">
+				<Nav className="mr-auto">
+					<Nav.Link href="/">Home</Nav.Link>
+				</Nav>
 				{!!user.username ? (
 					<>
-						<Navbar.Text>
-							Signed in as: <Link to="/">{user.username}</Link>
-						</Navbar.Text>
-						<LogoutButton setUser={setUser} />
+						<LoggedInUser user={user} setUser={setUser} />
 					</>
 				) : (
 					<>
