@@ -1,21 +1,14 @@
-import React, { useState } from 'react';
-import Post from '../components/Post.js';
+import React from 'react';
+import PostCard from '../components/PostCard.js';
 
-
-
-const PostsPage = (props) => {
+const PostsPage = ({ posts }) => {
 	return (
-		
 		<div classname="container">
-			
-			{props.posts.map((post) => (
-				<Post post={post} />
+			{posts.map((post) => (
+				<PostCard post={post} />
 			))}
-			
 		</div>
 	);
 };
 
-
 export default PostsPage;
-
