@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Vote from './Vote'
 
+
  const Post = (props) => {
   // let [votes, newVotes] = useState(0)
 
@@ -23,21 +24,37 @@ import Vote from './Vote'
   // }
 
   return (
-  <div>
-    <h1>{props.post.title}</h1>
-    <p>{props.post.content}</p>
-          <p>Posted by:{props.post.user.username} ⚉ </p>
-          <p>{props.post.article_link}</p>
-          <Vote />
+          
           {/* <p>Current Vote Count: {votes}</p>
           <button id="upVoteButton" onClick={handleUpVoteClick}>UpVote ↑ </button><br/><br/>
           <button id="downVoteButton" onClick={handleDownVoteClick}>DownVote ↓ </button> */}
-  </div>
+  <div id="post">
+    <div id="content">
+    <h1 id="title">{props.post.title}</h1>
+    <p id="article-text">{props.post.content}</p>
+          
+          <a id="article" href={props.post.article_link} target="_blank">
+            <a><span>{props.post.article_link}</span></a><br></br>
+          </a>
+//           <br></br>
+//           <button id="upVoteButton" onClick={handleUpVoteClick}> ⇧ </button>
+//           <button id="downVoteButton" onClick={handleDownVoteClick}> ⇩ </button>
+          <Vote />
+          <span id="vote"><strong> {votes} people voted this true</strong></span>
+          <p id="user-name">Posted by: {props.post.user.username}  </p>
+         
+    </div>
+    </div>
+
   );
-
-
-
+ 
+  
 }
+
+
+
+//if votes > 1 people voted this true
+//else people voted this false
 
 export default Post;
 
