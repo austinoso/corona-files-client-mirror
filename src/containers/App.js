@@ -3,7 +3,7 @@ import '../App.css';
 import PostsPage from './PostsPage.js';
 import NavBar from '../components/NavBar.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NewPost from '../components/NewPost.js';
+import NewPost from './NewPostPage.js';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
 
@@ -62,6 +62,8 @@ class App extends Component {
 						path="/login"
 						render={(renderProps) => <LoginPage setUser={this.setUser} />}
 					/>
+					<Route exact path="/newpost" render={(renderProps) => <NewPost />} />
+					<Route exact path="/login" render={(renderProps) => <LoginPage />} />
 				</div>
 			</Router>
 		);
