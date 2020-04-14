@@ -30,9 +30,7 @@ const Post = (props) => {
 				<p id="article-text">{props.post.content}</p>
 
 				<a id="article" href={props.post.article_link} target="_blank">
-					<a>
 						<span>{props.post.article_link}</span>
-					</a>
 					<br></br>
 				</a>
 				<br></br>

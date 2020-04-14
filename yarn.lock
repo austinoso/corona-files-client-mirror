@@ -4742,6 +4742,11 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+google-maps-react@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/google-maps-react/-/google-maps-react-2.0.2.tgz#e03fbba032fe570fb38744bf9cd10b946c591cae"
+  integrity sha512-6cYauGwt22haDUrWxKQ6yoNOqjiuxHo8YYcmb+aBvNICokdXmZOUB6Ah4vD5VexMVlrwP2PFqA/D8sHpEB52KA==
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
@@ -8339,7 +8344,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8568,6 +8573,28 @@ react-error-overlay@^6.0.7:
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha512-TAv1KJFh3RhqxNvhzxj6LeT5NWklP6rDr2a0jaTfsZ5wSZWHOGeqQyejUp3xxLfPt2UpyJEcVQB/zyPcmonNFA==
+
+react-geocode@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-geocode/-/react-geocode-0.2.1.tgz#c9f58d979097272831a01ef0ebd89add8e15725a"
+  integrity sha512-kipHpIA1w0XbQ2x6BOpLsup9kui6yjjAaXigCtom85xiKDB2KqDlxYx7dzd68Hxd5KG27nSFiWNRLosjKVg6VQ==
+  dependencies:
+    regenerator-runtime "^0.13.3"
+
+react-google-autocomplete@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-google-autocomplete/-/react-google-autocomplete-1.1.4.tgz#dd2abe20d6c1164ad5085bedbbf15c368beb37a0"
+  integrity sha512-Ogj9wtNbd41BjYwbjYdIHk3X5m1a3cuVXa4si2DdEEMQYk/X1lXXrV2lZW7cFD8afg8MQOfIKltLI1WMLARC8Q==
+  dependencies:
+    prop-types "^15.5.0"
+
+react-google-places-autocomplete@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-google-places-autocomplete/-/react-google-places-autocomplete-2.0.3.tgz#e49b093803d73f6471b35f90a8a21f4dfc8d138d"
+  integrity sha512-KSM5NFWrdLr9Ojhg4p41TtjiC2PcBvxs8Ao8IP9gfki4bmQ12KKJ22vsahWh/j+V8SDwJZIV9q8yNHn3OVGyPg==
+  dependencies:
+    prop-types "^15.6.2"
+    react "^16.13.1"
 
 react-is@^16.12.0, react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.13.1"

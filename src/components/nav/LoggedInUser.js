@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LogoutButton from './LogoutButton';
 import { Dropdown } from 'react-bootstrap';
 

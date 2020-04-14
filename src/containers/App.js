@@ -37,13 +37,27 @@ class App extends Component {
 			<Router>
 				<div className="app text-white">
 					<NavBar setUser={this.setUser} user={this.state.user} />
-					<Route exact path="/" render={(renderProps) => <PostsContainer {...renderProps} />} />
-					<Route exact path="/register" render={(renderProps) => <RegisterPage setUser={this.setUser} />} />
-					<Route exact path="/login" render={(renderProps) => <LoginPage setUser={this.setUser} />} />
+					<Route
+						exact
+						path="/"
+						render={(renderProps) => <PostsContainer {...renderProps} />}
+					/>
+					<Route
+						exact
+						path="/register"
+						render={(renderProps) => <RegisterPage setUser={this.setUser} />}
+					/>
+					<Route
+						exact
+						path="/login"
+						render={(renderProps) => <LoginPage setUser={this.setUser} />}
+					/>
 					<Route
 						exact
 						path={`/posts/:slug`}
-						render={(routerProps) => <PostsPage {...routerProps} posts={this.posts} />}
+						render={(routerProps) => (
+							<PostsPage {...routerProps} posts={this.posts} />
+						)}
 					/>
 
 					{/* <Route

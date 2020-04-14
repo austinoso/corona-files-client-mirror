@@ -27,7 +27,6 @@ const PostShow = ({ id }) => {
 	) : (
 		<h1>Looking for the post...Post was not found</h1>
 	);
-	// return <h1>PostPage</h1>;
 };
 
 export default PostShow;

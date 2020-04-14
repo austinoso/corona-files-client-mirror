@@ -32,7 +32,7 @@ const Vote = (props) => {
 
 	return (
 		<div>
-			<p>{showVotes}</p>
+			{/* <p>{showVotes}</p> */}
 			<button id="upVoteButton" onClick={handleUpVoteClick}>
 				UpVote ↑ {upVotes}
 			</button>
