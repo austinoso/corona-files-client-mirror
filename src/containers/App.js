@@ -10,14 +10,17 @@ import LoginPage from './LoginPage';
 class App extends Component {
 	state = {
 		posts: [],
-		username: localStorage.username,
+		user: {
+			username: localStorage.username,
+			token: localStorage.token,
+		},
 	};
 
 	componentDidMount() {
 		const configObj = {
 			method: 'GET',
 			headers: {
-				Authorization: `Bearer ${localStorage.token}`,
+				Authorization: `Bearer ${this.state.user.token}`,
 			},
 		};
 		console.log(configObj);
@@ -26,11 +29,24 @@ class App extends Component {
 			.then((posts) => this.setState({ posts }));
 	}
 
+	setUser = ({ jwt, user }) => {
+		localStorage.setItem('token', jwt);
+		localStorage.setItem('username', user.username);
+		console.log(localStorage.username);
+
+		this.setState({
+			user: {
+				username: localStorage.username,
+				token: localStorage.token,
+			},
+		});
+	};
+
 	render() {
 		return (
 			<Router>
 				<div className="app">
-					<NavBar />
+					<NavBar setUser={this.setUser} user={this.state.user} />
 					<Route
 						exact
 						path="/"
@@ -40,9 +56,13 @@ class App extends Component {
 					<Route
 						exact
 						path="/register"
-						render={(renderProps) => <RegisterPage />}
+						render={(renderProps) => <RegisterPage setUser={this.setUser} />}
 					/>
-					<Route exact path="/login" render={(renderProps) => <LoginPage />} />
+					<Route
+						exact
+						path="/login"
+						render={(renderProps) => <LoginPage setUser={this.setUser} />}
+					/>
 				</div>
 			</Router>
 		);

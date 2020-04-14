@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
-const LoginForm = () => {
+const LoginForm = ({ setUser }) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [redirect, setRedirect] = useState(
@@ -28,41 +28,40 @@ const LoginForm = () => {
 		})
 			.then((r) => r.json())
 			.then((token) => {
-				localStorage.setItem('token', token.jwt);
-				localStorage.setItem('username', token.user.username);
-				console.log('username', token.user.username);
+				setUser(token);
 			});
 		setRedirect(true);
 	};
 
 	return (
-		<div className="card">
+		<div>
 			{redirect ? <Redirect to="/" /> : null}
-			<div className="card-body">
-				<Form onSubmit={(event) => handleSubmit(event)}>
-					<div className="form-group">
-						<label for="username">Username</label>
-						<input
-							onChange={(event) => setUsername(event.target.value)}
-							type="text"
-							className="form-control"
-							id="username"
-							aria-describedby="username"
-						/>
-					</div>
-					<div className="form-group">
-						<label for="password">Password</label>
-						<input
-							onChange={(event) => setPassword(event.target.value)}
-							type="password"
-							className="form-control"
-							id="password"
-							aria-describedby="emailHelp"
-						/>
-					</div>
-					<input type="submit" className="btn btn-primary" />
-				</Form>
-			</div>
+
+			<Form onSubmit={(event) => handleSubmit(event)}>
+				<Form.Group controlId="formUsername">
+					<Form.Label>Email address</Form.Label>
+					<Form.Control
+						onChange={(event) => setUsername(event.target.value)}
+						type="text"
+						placeholder="Enter Username"
+					/>
+					<Form.Text className="text-muted">
+						We'll never share your email with anyone else.
+					</Form.Text>
+				</Form.Group>
+
+				<Form.Group controlId="formPassword">
+					<Form.Label>Password</Form.Label>
+					<Form.Control
+						onChange={(event) => setPassword(event.target.value)}
+						type="password"
+						placeholder="Password"
+					/>
+				</Form.Group>
+				<Button variant="primary" type="submit">
+					Login
+				</Button>
+			</Form>
 		</div>
 	);
 };

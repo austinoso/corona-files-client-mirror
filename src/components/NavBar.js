@@ -1,52 +1,31 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
+import LogoutButton from './nav/LogoutButton';
 
-export default function NavBar() {
+export default function NavBar({ user, setUser }) {
 	return (
-		<div>
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
-				<Link to="/" className="navbar-brand">
-					Corona Files
-				</Link>
-				<button
-					className="navbar-toggler"
-					type="button"
-					data-toggle="collapse"
-					data-target="#navbarNav"
-					aria-controls="navbarNav"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span className="navbar-toggler-icon"></span>
-				</button>
-				<div className="collapse navbar-collapse" id="navbarNav">
-					<ul className="navbar-nav">
-						<li className="nav-item">
-							<Link to="/" className="nav-link">
-								Home
-							</Link>
-						</li>
-					</ul>
-					<ul className="navbar-nav ml-auto">
-						{!!localStorage.username ? (
-							<p>{localStorage.username}</p>
-						) : (
-							<>
-								<li className="nav-item">
-									<Link to="/login" className="nav-link">
-										Login
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link to="/register" className="nav-link">
-										Register
-									</Link>
-								</li>
-							</>
-						)}
-					</ul>
-				</div>
-			</nav>
-		</div>
+		<Navbar bg="light" expand="lg">
+			<Navbar.Brand href="/">Corona Files</Navbar.Brand>
+			<Navbar.Toggle />
+			<Nav className="mr-auto">
+				<Nav.Link href="/">Home</Nav.Link>
+			</Nav>
+			<Navbar.Collapse className="justify-content-end">
+				{!!user.username ? (
+					<>
+						<Navbar.Text>
+							Signed in as: <Link to="/">{user.username}</Link>
+						</Navbar.Text>
+						<LogoutButton setUser={setUser} />
+					</>
+				) : (
+					<>
+						<Nav.Link href="/login">Login</Nav.Link>
+						<Nav.Link href="/register">Register</Nav.Link>
+					</>
+				)}
+			</Navbar.Collapse>
+		</Navbar>
 	);
 }
