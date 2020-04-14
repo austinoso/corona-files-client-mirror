@@ -7,6 +7,7 @@ import NewPost from '../components/NewPost.js';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
 
+
 class App extends Component {
 	state = {
 		posts: [],
@@ -30,6 +31,7 @@ class App extends Component {
 		return (
 			<Router>
 				<div className="app">
+				
 					<NavBar />
 					<Route
 						exact
@@ -42,7 +44,9 @@ class App extends Component {
 						path="/register"
 						render={(renderProps) => <RegisterPage />}
 					/>
-					<Route exact path="/login" render={(renderProps) => <LoginPage />} />
+					<Route exact path="/login" render={(renderProps) => 
+					<LoginPage />} />
+							
 				</div>
 			</Router>
 		);
