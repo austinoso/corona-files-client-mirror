@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
-import Post from '../components/Post.js';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import NewPostPage from './NewPostPage.js';
+import PostShow from './PostShow';
 
+const PostsPage = ({ match }) => {
+	const component = () => {
+		const slug = match.params.slug;
 
+		if (slug === 'new') {
+			return <NewPostPage />;
+		} else if (typeof parseInt(slug) === 'number') {
+			return <PostShow id={slug} />;
+		}
+	};
 
-const PostsPage = (props) => {
-	return (
-		
-		<div classname="container">
-			
-			{props.posts.map((post) => (
-				<Post post={post} />
-			))}
-			
-		</div>
-	);
+	return component();
 };
 
-
 export default PostsPage;
-

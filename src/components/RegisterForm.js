@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-const RegisterForm = () => {
+const RegisterForm = ({ setUser }) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [redirect, setRedirect] = useState(
@@ -10,7 +12,6 @@ const RegisterForm = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log({ username, password });
 
 		fetch('http://localhost:3000/api/v1/users', {
 			method: 'POST',
@@ -26,39 +27,42 @@ const RegisterForm = () => {
 			}),
 		})
 			.then((r) => r.json())
-			.then((token) => localStorage.setItem('token', token.jwt));
+			.then((token) => {
+				setUser(token);
+			});
 
 		return <Redirect to="/" />;
 	};
 
 	return (
-		<div className="card">
+		<div>
 			{redirect ? <Redirect to="/" /> : null}
-			<div className="card-body">
-				<form onSubmit={(event) => handleSubmit(event)}>
-					<div className="form-group">
-						<label for="username">Username</label>
-						<input
-							onChange={(event) => setUsername(event.target.value)}
-							type="text"
-							className="form-control"
-							id="username"
-							aria-describedby="username"
-						/>
-					</div>
-					<div className="form-group">
-						<label for="password">Password</label>
-						<input
-							onChange={(event) => setPassword(event.target.value)}
-							type="password"
-							className="form-control"
-							id="password"
-							aria-describedby="emailHelp"
-						/>
-					</div>
-					<input type="submit" className="btn btn-primary" />
-				</form>
-			</div>
+
+			<Form onSubmit={handleSubmit}>
+				<Form.Group controlId="formUsername">
+					<Form.Label>Email address</Form.Label>
+					<Form.Control
+						onChange={(event) => setUsername(event.target.value)}
+						type="text"
+						placeholder="Enter Username"
+					/>
+					<Form.Text className="text-muted">
+						We'll never share your email with anyone else.
+					</Form.Text>
+				</Form.Group>
+
+				<Form.Group controlId="formPassword">
+					<Form.Label>Password</Form.Label>
+					<Form.Control
+						onChange={(event) => setPassword(event.target.value)}
+						type="password"
+						placeholder="Password"
+					/>
+				</Form.Group>
+				<Button variant="primary" type="submit">
+					Register
+				</Button>
+			</Form>
 		</div>
 	);
 };

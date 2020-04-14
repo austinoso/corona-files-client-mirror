@@ -1,61 +1,57 @@
 import React, { Component } from 'react';
-import '../App.css';
-import PostsPage from './PostsPage.js';
-import NavBar from '../components/NavBar.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NewPost from '../components/NewPost.js';
+import { Container } from 'react-bootstrap';
+import '../App.css';
+import PostsContainer from './PostsContainer.js';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
-import UserProfiles from './UserProfiles.js'
-
+import UserProfiles from './UserProfiles.js';
+import NavBar from '../components/NavBar.js';
+import PostsPage from './PostsPage';
 
 class App extends Component {
 	state = {
 		posts: [],
 		profiles: [],
-		username: localStorage.username,
+		user: {
+			username: localStorage.username,
+			token: localStorage.token,
+		},
 	};
 
-	componentDidMount() {
-		const configObj = {
-			method: 'GET',
-			headers: {
-				Authorization: `Bearer ${localStorage.token}`,
-			},
-		};
-		console.log(configObj);
-		fetch(`http://localhost:3000/posts`, configObj)
-			.then((resp) => resp.json())
-			.then((posts) => this.setState({ posts }));
-	}
+	setUser = ({ jwt, user }) => {
+		console.log(user);
+		localStorage.setItem('token', jwt);
+		localStorage.setItem('username', user.username);
 
-	componentDidMount() {
-		fetch(`http://localhost:3000/user_profiles`)
-			.then((resp) => resp.json())
-			.then((profiles) => this.setState({ profiles }));
-	}
+		this.setState({
+			user: {
+				username: localStorage.username,
+				token: localStorage.token,
+			},
+		});
+	};
 
 	render() {
 		return (
 			<Router>
-				<div className="app">
-				
-					<NavBar />
+				<div className="app text-white">
+					<NavBar setUser={this.setUser} user={this.state.user} />
+					<Route exact path="/" render={(renderProps) => <PostsContainer {...renderProps} />} />
+					<Route exact path="/register" render={(renderProps) => <RegisterPage setUser={this.setUser} />} />
+					<Route exact path="/login" render={(renderProps) => <LoginPage setUser={this.setUser} />} />
 					<Route
 						exact
-						path="/"
-						render={(renderProps) => <PostsPage posts={this.state.posts} />}
+						path={`/posts/:slug`}
+						render={(routerProps) => <PostsPage {...routerProps} posts={this.posts} />}
 					/>
-					{/* <Route exact path="/posts/:id" render={renderProps => <h1>PostsPage</h1>}/> */}
-					<Route
-						exact
-						path="/register"
-						render={(renderProps) => <RegisterPage />}
-					/>
-					<Route exact path="/login" render={(renderProps) => 
-					<LoginPage />} />
-					<UserProfiles profiles={this.state.profiles} />
-							
+
+					{/* <Route
+						path={`/profiles/:profileId`}
+						render={(routerProps) => (
+							<UserProfiles {...routerProps} posts={this.profiles} />
+						)}
+					/> */}
 				</div>
 			</Router>
 		);
