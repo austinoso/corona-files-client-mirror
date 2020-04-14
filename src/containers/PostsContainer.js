@@ -42,7 +42,6 @@ const PostsContainer = (props) => {
 		return posts.filter((post) => {
 			const lats = [currentLocation.lat, post.location_lat];
 			const longs = [currentLocation.lng, post.location_long];
-			console.log(longs);
 			return (
 				!!(Math.max(...lats) - Math.min(...lats) < 0.5) &&
 				!!(Math.max(...longs) - Math.min(...longs) < 0.5)
