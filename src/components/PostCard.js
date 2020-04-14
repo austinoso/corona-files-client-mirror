@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
 import Vote from './Vote';
 
 const Post = (props) => {
@@ -23,7 +24,7 @@ const Post = (props) => {
 	};
 
 	return (
-		<div id="post">
+		<Container href={`posts/${props.post.id}`} id="post">
 			<div id="content">
 				<h1 id="title">{props.post.title}</h1>
 				<p id="article-text">{props.post.content}</p>
@@ -49,7 +50,7 @@ const Post = (props) => {
 				</span>
 				<p id="user-name">Posted by: {props.post.user.username} </p>
 			</div>
-		</div>
+		</Container>
 	);
 };
 

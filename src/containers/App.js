@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NewPost from './NewPostPage.js';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
+import PostPage from './PostPage';
 
 class App extends Component {
 	state = {
@@ -23,7 +24,6 @@ class App extends Component {
 				Authorization: `Bearer ${this.state.user.token}`,
 			},
 		};
-		console.log(configObj);
 		fetch(`http://localhost:3000/posts`, configObj)
 			.then((resp) => resp.json())
 			.then((posts) => this.setState({ posts }));
@@ -49,9 +49,10 @@ class App extends Component {
 					<Route
 						exact
 						path="/"
-						render={(renderProps) => <PostsPage posts={this.state.posts} />}
+						render={(renderProps) => (
+							<PostsPage {...renderProps} posts={this.state.posts} />
+						)}
 					/>
-					{/* <Route exact path="/posts/:id" render={renderProps => <h1>PostsPage</h1>}/> */}
 					<Route
 						exact
 						path="/register"
@@ -62,8 +63,17 @@ class App extends Component {
 						path="/login"
 						render={(renderProps) => <LoginPage setUser={this.setUser} />}
 					/>
-					<Route exact path="/newpost" render={(renderProps) => <NewPost />} />
-					<Route exact path="/login" render={(renderProps) => <LoginPage />} />
+					<Route
+						exact
+						path="posts/newpost"
+						render={(renderProps) => <NewPost />}
+					/>
+					<Route
+						path={`/posts/:postId`}
+						render={(routerProps) => (
+							<PostPage {...routerProps} posts={this.posts} />
+						)}
+					/>
 				</div>
 			</Router>
 		);
