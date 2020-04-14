@@ -28,13 +28,14 @@ import React, {useState} from 'react';
     <h1 id="title">{props.post.title}</h1>
     <p id="article-text">{props.post.content}</p>
           
-          <a href={props.post.article_link} target="_blank">
+          <a id="article" href={props.post.article_link} target="_blank">
             <a><span>{props.post.article_link}</span></a><br></br>
           </a>
+          <br></br>
           <button id="upVoteButton" onClick={handleUpVoteClick}> ⇧ </button>
           <button id="downVoteButton" onClick={handleDownVoteClick}> ⇩ </button>
-          <span id="vote"> {votes} people voted this true</span>
-          <p>Posted by: {props.post.user.username}  </p>
+          <span id="vote"><strong> {votes} people voted this true</strong></span>
+          <p id="user-name">Posted by: {props.post.user.username}  </p>
          
     </div>
     </div>
