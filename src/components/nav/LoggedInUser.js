@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import LogoutButton from './LogoutButton';
-import {
-	Dropdown,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-} from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 
 export default function LoggedInUser({ user, setUser }) {
 	return (
 		<>
 			<Dropdown>
-				<Dropdown.Toggle id="user-dropdown">
+				<Dropdown.Toggle variant="secondary" id="user-dropdown">
 					Signed in as: {user.username}
 				</Dropdown.Toggle>
 

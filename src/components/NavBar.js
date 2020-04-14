@@ -5,7 +5,7 @@ import LoggedInUser from './nav/LoggedInUser';
 
 export default function NavBar({ user, setUser }) {
 	return (
-		<Navbar bg="dark" expand="lg">
+		<Navbar bg="dark" variant="dark" expand="lg">
 			<Navbar.Brand href="/">Corona Files</Navbar.Brand>
 			<Navbar.Toggle />
 			<Navbar.Collapse className="justify-content-end">
