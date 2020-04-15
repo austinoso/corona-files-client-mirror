@@ -20,19 +20,19 @@ const Vote = (props) => {
 		// 	},
 		// 	body: JSON.stringify({
 		// 		post: {
-		// 			"score": props.post.score += 1
+		// 			score: props.post.score += 1
 		// 		}
 		// 	})
 		// }
 		)
 		.then(res => res.json())
-		.then(post => console.log(post));
+		.then(vote => console.log(vote));
 	};
 
 	const handleDownVoteClick = () => {
 		newDownVotes((downVotes -= 1));
 
-		fetch(`http://localhost:3000/posts/${props.post.score}`, {	
+		fetch(`http://localhost:3000/posts/${props.post.id}`, {	
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
