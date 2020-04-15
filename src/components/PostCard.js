@@ -57,8 +57,3 @@ const Post = (props) => {
 
 export default Post;
 
-{
-	/* <p>Current Vote Count: {votes}</p>
-          <button id="upVoteButton" onClick={handleUpVoteClick}>UpVote ↑ </button><br/><br/>
-          <button id="downVoteButton" onClick={handleDownVoteClick}>DownVote ↓ </button> */
-}

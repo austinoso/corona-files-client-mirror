@@ -8,15 +8,29 @@ const Vote = (props) => {
 	let [upVotes, newUpVotes] = useState(0);
 	let [downVotes, newDownVotes] = useState(0);
 
-	// const handleVote = (event) => {
-	// 	event.preventDefault();
-
-
-	// };
-
 	const handleUpVoteClick = () => {
 		newUpVotes((upVotes += 1))
 
+		fetch(`http://localhost:3000/posts/${props.post.id}`
+		// , {	
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 		Accept: 'application/json'
+		// 	},
+		// 	body: JSON.stringify({
+		// 		post: {
+		// 			"score": props.post.score += 1
+		// 		}
+		// 	})
+		// }
+		)
+		.then(res => res.json())
+		.then(post => console.log(post));
+	};
+
+	const handleDownVoteClick = () => {
+		newDownVotes((downVotes -= 1));
 
 		fetch(`http://localhost:3000/posts/${props.post.score}`, {	
 			method: 'POST',
@@ -26,7 +40,7 @@ const Vote = (props) => {
 			},
 			body: JSON.stringify({
 				post: {
-					"score": props.post.score + 1
+					score: props.post.score - 1
 				}
 			})
 		})
@@ -34,21 +48,17 @@ const Vote = (props) => {
 		.then(post => console.log(post));
 	};
 
-	const handleDownVoteClick = () => {
-		newDownVotes((downVotes -= 1));
-	};
-
-	const showVotes = (upVotes, downVotes) => {
-		if (upVotes >= downVotes) {
-			return `Post Currently Has More Upvotes: ${upVotes}`;
-		} else {
-			return `Post Currently Has More Downvotes: ${downVotes}`;
-		}
-	};
+	// const showVotes = (upVotes, downVotes) => {
+	// 	if (upVotes >= downVotes) {
+	// 		return `Post Currently Has More Upvotes: ${upVotes}`;
+	// 	} else {
+	// 		return `Post Currently Has More Downvotes: ${downVotes}`;
+	// 	}
+	// };
 
 	return (
 		<div>
-			<p>{showVotes}</p>
+			{/* <p>{showVotes}</p> */}
 			<button id="upVoteButton" onClick={handleUpVoteClick}>
 				UpVote ↑ {upVotes}
 			</button>
