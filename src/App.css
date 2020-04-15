@@ -36,6 +36,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -54,6 +55,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
 /* canvas {
 	display: block;
 	vertical-align: bottom;
@@ -84,52 +86,31 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 200;
 }
+
 #post {
   color: white;
   border-radius: 4px;
   border: 10px rgb(49, 50, 50);
-  background: #000000; /* fallback for old browsers */
-  background: #8e9eab; /* fallback for old browsers */
-  background: #403b4a; /* fallback for old browsers */
-  background: #bbd2c5; /* fallback for old browsers */
+  background: #000000;
+  /* fallback for old browsers */
+  background: #8e9eab;
+  /* fallback for old browsers */
+  background: #403b4a;
+  /* fallback for old browsers */
+  background: #bbd2c5;
+  /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
     rgba(133, 166, 187, 0.85),
-    rgba(119, 135, 126, 0.85)
-  ); /* Chrome 10-25, Safari 5.1-6 */
+    rgba(82, 94, 87, 0.85)
+  );
+  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to top,
     rgba(133, 166, 187, 0.85),
-    rgba(119, 135, 126, 0.85)
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    rgba(82, 94, 87, 0.85)
+  );
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  text-decoration: none;
-}
-
-#login-form {
-  border-radius: 4px;
-  border: 10px rgb(49, 50, 50);
-  background: #000000; /* fallback for old browsers */
-  background: #8e9eab; /* fallback for old browsers */
-  background: #403b4a; /* fallback for old browsers */
-  background: #bbd2c5; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    rgba(133, 166, 187, 0.85),
-    rgba(119, 135, 126, 0.85)
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    rgba(133, 166, 187, 0.85),
-    rgba(119, 135, 126, 0.85)
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -144,20 +125,26 @@ body {
 #register {
   border-radius: 4px;
   border: 10px rgb(49, 50, 50);
-  background: #000000; /* fallback for old browsers */
-  background: #8e9eab; /* fallback for old browsers */
-  background: #403b4a; /* fallback for old browsers */
-  background: #bbd2c5; /* fallback for old browsers */
+  background: #000000;
+  /* fallback for old browsers */
+  background: #8e9eab;
+  /* fallback for old browsers */
+  background: #403b4a;
+  /* fallback for old browsers */
+  background: #bbd2c5;
+  /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
     rgba(133, 166, 187, 0.85),
-    rgba(119, 135, 126, 0.85)
-  ); /* Chrome 10-25, Safari 5.1-6 */
+    rgba(82, 94, 87, 0.85)
+  );
+  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to top,
     rgba(133, 166, 187, 0.85),
-    rgba(119, 135, 126, 0.85)
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    rgba(82, 94, 87, 0.85)
+  );
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -167,6 +154,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   text-decoration: none;
+  padding: 20px;
 }
 
 .text {
@@ -196,10 +184,12 @@ body {
   text-decoration: none;
   text-shadow: 0px 1px 0px darkblue;
 }
+
 #upVoteButton {
   background: linear-gradient(to bottom, #6ccef2 5%, #02394d 100%);
   background-color: #1590bd;
 }
+
 #upVoteButton {
   position: relative;
   top: 1px;
@@ -222,10 +212,12 @@ body {
   text-decoration: none;
   text-shadow: 0px 1px 0px #810e05;
 }
+
 #downVoteButton {
   background: linear-gradient(to bottom, #f29a94c4 5%, #6f140c 100%);
   background-color: #dc6055;
 }
+
 #downVoteButton {
   position: relative;
   top: 1px;

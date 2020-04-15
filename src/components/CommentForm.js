@@ -20,7 +20,7 @@ const CommentForm = ({ postId, addComment }) => {
       },
       body: JSON.stringify({
         post_id: postId,
-        user_id: localStorage.userId,
+        user_id: parseInt(localStorage.userId),
         content,
       }),
     };

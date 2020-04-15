@@ -12,7 +12,6 @@ import PostsPage from "./PostsPage";
 class App extends Component {
   state = {
     posts: [],
-    profiles: [],
     user: {
       username: localStorage.username,
       token: localStorage.token,

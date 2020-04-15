@@ -33,7 +33,11 @@ const Post = (props) => {
             {" "}
             <Vote post={props.post} />
             <span id="vote">
-              <strong> {votes} people voted this true</strong>
+              {/* <strong> {props.post.score} people voted this true</strong> */}
+              <strong>
+                {" "}
+                This was voted {props.post.score > 0 ? "TRUE" : "FALSE"}
+              </strong>
             </span>
             <p id="user-name">Posted by: {props.post.user.username} </p>
           </Col>
