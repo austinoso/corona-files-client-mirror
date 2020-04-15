@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Vote from './Vote';
+import { useHistory } from 'react-router-dom';
 
 const Post = (props) => {
 	let [votes, newVotes] = useState(0);
+	const history = useHistory();
 
 	const handleUpVoteClick = () => {
 		newVotes((votes += 1));
@@ -24,12 +26,18 @@ const Post = (props) => {
 		// }
 	};
 
+	const postClick = (id) => {
+		history.push(`/posts/${id}`);
+	};
+
 	return (
 		<Container fluid id="post">
 			<div id="content">
 				<Row>
-					<Link to={`/posts/${props.post.id}`}>
-						<h1 id="title">{props.post.title}</h1>
+					<Col to={'/login'}>
+						<h1 id="title" onClick={() => postClick(props.post.id)}>
+							{props.post.title}
+						</h1>
 						<p id="article-text">{props.post.content}</p>
 
 						<a id="article" href={props.post.article_link} target="_blank">
@@ -45,14 +53,17 @@ const Post = (props) => {
 					{' '}
 					⇩{' '}
 				</button> */}
-					</Link>
-				</Row>
+					</Col>
 
-				<Vote />
-				<span id="vote">
-					<strong> {votes} people voted this true</strong>
-				</span>
-				<p id="user-name">Posted by: {props.post.user.username} </p>
+					<Col xs lg="3">
+						{' '}
+						<Vote />
+						<span id="vote">
+							<strong> {votes} people voted this true</strong>
+						</span>
+						<p id="user-name">Posted by: {props.post.user.username} </p>
+					</Col>
+				</Row>
 			</div>
 		</Container>
 	);

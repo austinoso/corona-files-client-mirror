@@ -3,12 +3,14 @@ import Comment from '../components/Comment';
 import { Container } from 'react-bootstrap';
 
 const PostComment = ({ comments }) => {
-	return (
+	return comments ? (
 		<>
-			{comments.map((comment) => (
+			{comments.reverse().map((comment) => (
 				<Comment comment={comment} />
 			))}
 		</>
+	) : (
+		<h1>No comments to display</h1>
 	);
 };
 
