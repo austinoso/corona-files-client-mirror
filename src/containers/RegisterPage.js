@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const RegisterPage = ({ setUser }) => {
 	return (
 		<div className="container">
-			<div className="user-form mx-auto">
+			<div className="user-form mx-auto" id="register">
 				<h1>Create an Account</h1>
 				<RegisterForm setUser={setUser} />
 				<p>

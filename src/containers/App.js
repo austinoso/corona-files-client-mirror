@@ -60,6 +60,13 @@ class App extends Component {
 							<PostsPage {...routerProps} posts={this.posts} />
 						)}
 					/>
+					<Route
+						exact
+						path={`/profile`}
+						render={(routerProps) => (
+							<UserProfiles {...routerProps} profiles={this.profiles} />
+						)}
+					/>
 				</div>
 			</Router>
 		);
