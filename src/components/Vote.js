@@ -1,74 +1,88 @@
-//This will receive the post props
-import React, { useState } from 'react';
-import PostCard from './PostCard';
+import React, { Component } from "react";
 
-const Vote = (props) => {
-	const [votes, newVotes] = useState(0);
-	// console.log(props);
-	let [upVotes, newUpVotes] = useState(0);
-	let [downVotes, newDownVotes] = useState(0);
+export class Vote extends Component {
+  state = {
+    vote: this.findVote(),
+    status: null,
+  };
 
-	const handleUpVoteClick = () => {
-		newUpVotes((upVotes += 1))
+  // this.props = { post };
+  findVote() {
+    return this.props.post.votes.find(
+      (vote) => vote.user_id === parseInt(localStorage.userId)
+    );
+  }
 
-		fetch(`http://localhost:3000/posts/${props.post.id}`
-		// , {	
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 		Accept: 'application/json'
-		// 	},
-		// 	body: JSON.stringify({
-		// 		post: {
-		// 			score: props.post.score += 1
-		// 		}
-		// 	})
-		// }
-		)
-		.then(res => res.json())
-		.then(vote => console.log(vote));
-	};
+  updateVote = () => {
+    fetch(`http://localhost:3000/votes/${this.state.vote.id}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        status: this.state.status,
+      }),
+    })
+      .then((res) => res.json())
+      .then((vote) => console.log("PATCHED VOTE", vote));
+  };
 
-	const handleDownVoteClick = () => {
-		newDownVotes((downVotes -= 1));
+  postVote = () => {
+    fetch(`http://localhost:3000/votes/`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        post_id: this.props.post.id,
+        user_id: parseInt(localStorage.userId),
+        status: this.state.status,
+      }),
+    })
+      .then((res) => res.json())
+      .then((vote) => console.log(vote));
+  };
 
-		fetch(`http://localhost:3000/posts/${props.post.id}`, {	
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: JSON.stringify({
-				post: {
-					score: props.post.score - 1
-				}
-			})
-		})
-		.then(res => res.json())
-		.then(post => console.log(post));
-	};
+  handleVoteClick = async (event) => {
+    if (event.target.id === "upVoteButton") {
+      console.log("up");
+      await this.setState({ status: true });
+      if (this.state.vote) {
+        console.log(this.state.status);
+        this.updateVote();
+      } else {
+        this.postVote();
+      }
+    } else if (event.target.id === "downVoteButton") {
+      console.log("down");
+      await this.setState({ status: false });
+      if (this.state.vote) {
+        console.log(this.state.status);
+        this.updateVote();
+      } else {
+        this.postVote();
+      }
+    }
+  };
 
-	// const showVotes = (upVotes, downVotes) => {
-	// 	if (upVotes >= downVotes) {
-	// 		return `Post Currently Has More Upvotes: ${upVotes}`;
-	// 	} else {
-	// 		return `Post Currently Has More Downvotes: ${downVotes}`;
-	// 	}
-	// };
-
-	return (
-		<div>
-			{/* <p>{showVotes}</p> */}
-			<button id="upVoteButton" onClick={handleUpVoteClick}>
-				UpVote ↑ {upVotes}
-			</button>
-			<br />
-			<br />
-			<button id="downVoteButton" onClick={handleDownVoteClick}>
-				DownVote ↓ {downVotes}
-			</button>
-		</div>
-	);
-};
+  render() {
+    return (
+      <div>
+        <button id="upVoteButton" onClick={this.handleVoteClick}>
+          UpVote ↑
+        </button>
+        <br />
+        <br />
+        <button id="downVoteButton" onClick={this.handleVoteClick}>
+          DownVote ↓
+        </button>
+      </div>
+    );
+  }
+}
 
 export default Vote;
