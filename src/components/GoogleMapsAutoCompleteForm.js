@@ -22,13 +22,9 @@ const GoogleMapsAutoCompleteForm = ({ setCurrentLocation }) => {
 
 	return (
 		<div id="locationField">
-			<GooglePlacesAutocomplete
-				apiKey={'AIzaSyALGimu9FVrBroqCrT2FyFowHkfWXZXDHs'}
-				onSelect={currentLocation}
-			/>
+			<GooglePlacesAutocomplete apiKey={apiKey} onSelect={currentLocation} />
 		</div>
 	);
 };
 
 export default GoogleMapsAutoCompleteForm;
-

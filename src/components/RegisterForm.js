@@ -46,7 +46,7 @@ const RegisterForm = ({ setUser }) => {
 						type="text"
 						placeholder="Enter Username"
 					/>
-					<Form.Text className="text-muted">
+					<Form.Text className="text">
 						We'll never share your email with anyone else.
 					</Form.Text>
 				</Form.Group>

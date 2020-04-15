@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import LoggedInUser from './nav/LoggedInUser';
+import UserProfiles from '../containers/UserProfiles';
 
 export default function NavBar({ user, setUser }) {
 	return (
@@ -11,10 +12,14 @@ export default function NavBar({ user, setUser }) {
 			<Navbar.Collapse className="justify-content-end">
 				<Nav className="mr-auto">
 					<Nav.Link href="/">Home</Nav.Link>
+					
 				</Nav>
 				{!!user.username ? (
 					<>
 						<LoggedInUser user={user} setUser={setUser} />
+						<Nav.Link href="/profile">Profile</Nav.Link>
+						
+						
 					</>
 				) : (
 					<>

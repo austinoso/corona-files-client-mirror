@@ -32,7 +32,7 @@ const LoginForm = ({ setUser }) => {
 	};
 
 	return (
-		<div>
+		<div id="login-form">
 			{redirect ? <Redirect to="/" /> : null}
 			<Form onSubmit={(event) => handleSubmit(event)}>
 				<Form.Group controlId="formUsername">
@@ -42,7 +42,7 @@ const LoginForm = ({ setUser }) => {
 						type="text"
 						placeholder="Enter Username"
 					/>
-					<Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
+					<Form.Text className="text">We'll never share your email with anyone else.</Form.Text>
 				</Form.Group>
 
 				<Form.Group controlId="formPassword">
