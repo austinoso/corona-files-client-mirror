@@ -53,6 +53,13 @@ const Post = (props) => {
 					{' '}
 					⇩{' '}
 				</button> */}
+
+				<Vote post={props.post}/>
+				<span id="vote">
+					<strong> {votes} people voted this true</strong>
+				</span>
+				<p id="user-name">Posted by: {props.post.user.username} </p>
+
 					</Col>
 
 					<Col xs lg="3">
@@ -64,6 +71,7 @@ const Post = (props) => {
 						<p id="user-name">Posted by: {props.post.user.username} </p>
 					</Col>
 				</Row>
+
 			</div>
 		</Container>
 	);
@@ -74,8 +82,3 @@ const Post = (props) => {
 
 export default Post;
 
-{
-	/* <p>Current Vote Count: {votes}</p>
-          <button id="upVoteButton" onClick={handleUpVoteClick}>UpVote ↑ </button><br/><br/>
-          <button id="downVoteButton" onClick={handleDownVoteClick}>DownVote ↓ </button> */
-}
