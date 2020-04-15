@@ -1,9 +1,9 @@
 //This will receive the post props
 import React, { useState } from 'react';
-import Post from './PostCard';
+import PostCard from './PostCard';
 
 const Vote = (props) => {
-	// const [votes, newVotes] = useState(0);
+	const [votes, newVotes] = useState(0);
 	// console.log(props);
 	let [upVotes, newUpVotes] = useState(0);
 	let [downVotes, newDownVotes] = useState(0);
@@ -11,11 +11,27 @@ const Vote = (props) => {
 	// const handleVote = (event) => {
 	// 	event.preventDefault();
 
-	// 	fetch('http://localhost:3000/');
+
 	// };
 
 	const handleUpVoteClick = () => {
-		newUpVotes((upVotes += 1));
+		newUpVotes((upVotes += 1))
+
+
+		fetch(`http://localhost:3000/posts/${props.post.score}`, {	
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify({
+				post: {
+					"score": props.post.score + 1
+				}
+			})
+		})
+		.then(res => res.json())
+		.then(post => console.log(post));
 	};
 
 	const handleDownVoteClick = () => {
@@ -32,7 +48,7 @@ const Vote = (props) => {
 
 	return (
 		<div>
-			{/* <p>{showVotes}</p> */}
+			<p>{showVotes}</p>
 			<button id="upVoteButton" onClick={handleUpVoteClick}>
 				UpVote ↑ {upVotes}
 			</button>

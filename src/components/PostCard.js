@@ -42,7 +42,7 @@ const Post = (props) => {
 					{' '}
 					⇩{' '}
 				</button> */}
-				<Vote />
+				<Vote post={props.post}/>
 				<span id="vote">
 					<strong> {votes} people voted this true</strong>
 				</span>

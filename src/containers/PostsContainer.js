@@ -27,18 +27,6 @@ const PostsContainer = (props) => {
 	}, [currentLocation]);
 
 	function filterPosts(posts) {
-		// return posts.filter((post) => {
-		// 	return inRange(
-		// 		post.location_lat,
-		// 		currentLocation.lat - 0.5,
-		// 		currentLocation.lat + 0.5
-		// 	) &&
-		// 		inRange(
-		// 			post.location_long,
-		// 			currentLocation.long - 0.5,
-		// 			currentLocation.long + 0.5
-		// 		);
-		// });
 		return posts.filter((post) => {
 			const lats = [currentLocation.lat, post.location_lat];
 			const longs = [currentLocation.lng, post.location_long];
@@ -48,15 +36,11 @@ const PostsContainer = (props) => {
 			);
 		});
 	}
-
-	function inRange(x, min, max) {
-		return (x - min) * (x - max) <= 0;
-	}
-
+	
 	return posts ? (
 		<div className="container">
 			<GoogleMapsAutoCompleteForm setCurrentLocation={setCurrentLocation} />
-			{posts.map((post) => (
+			{posts.slice(0).reverse().map((post) => (
 				<PostCard key={post.id} post={post} />
 			))}
 		</div>
