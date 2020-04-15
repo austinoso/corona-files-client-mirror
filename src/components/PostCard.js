@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Vote from './Vote';
 
@@ -24,17 +25,19 @@ const Post = (props) => {
 	};
 
 	return (
-		<Container href={`posts/${props.post.id}`} id="post">
+		<Container fluid id="post">
 			<div id="content">
-				<h1 id="title">{props.post.title}</h1>
-				<p id="article-text">{props.post.content}</p>
+				<Row>
+					<Link to={`/posts/${props.post.id}`}>
+						<h1 id="title">{props.post.title}</h1>
+						<p id="article-text">{props.post.content}</p>
 
-				<a id="article" href={props.post.article_link} target="_blank">
-						<span>{props.post.article_link}</span>
-					<br></br>
-				</a>
-				<br></br>
-				{/* <button id="upVoteButton" onClick={handleUpVoteClick}>
+						<a id="article" href={props.post.article_link} target="_blank">
+							<span>{props.post.article_link}</span>
+							<br></br>
+						</a>
+						<br></br>
+						{/* <button id="upVoteButton" onClick={handleUpVoteClick}>
 					{' '}
 					⇧{' '}
 				</button>
@@ -42,6 +45,9 @@ const Post = (props) => {
 					{' '}
 					⇩{' '}
 				</button> */}
+					</Link>
+				</Row>
+
 				<Vote />
 				<span id="vote">
 					<strong> {votes} people voted this true</strong>
