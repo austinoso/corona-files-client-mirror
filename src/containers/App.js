@@ -23,6 +23,7 @@ class App extends Component {
 		console.log(user);
 		localStorage.setItem('token', jwt);
 		localStorage.setItem('username', user.username);
+		localStorage.setItem('userId', user.id);
 
 		this.setState({
 			user: {
@@ -59,13 +60,6 @@ class App extends Component {
 							<PostsPage {...routerProps} posts={this.posts} />
 						)}
 					/>
-
-					{/* <Route
-						path={`/profiles/:profileId`}
-						render={(routerProps) => (
-							<UserProfiles {...routerProps} posts={this.profiles} />
-						)}
-					/> */}
 				</div>
 			</Router>
 		);

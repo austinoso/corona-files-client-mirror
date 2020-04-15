@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PostCard from '../components/PostCard.js';
 import Spinner from 'react-bootstrap/Spinner';
 import GoogleMapsAutoCompleteForm from '../components/GoogleMapsAutoCompleteForm.js';
-import Geocode from 'react-geocode';
 
 const PostsContainer = (props) => {
 	const [posts, setPosts] = useState(null);

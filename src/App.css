@@ -74,6 +74,7 @@ body {
 #title {
 	font-family: 'Oswald', sans-serif;
 	font-weight: bold;
+	text-decoration: none;
 }
 
 #article-text {
@@ -106,11 +107,13 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	text-decoration: none;
 }
 
 #content {
 	margin: 7px;
 	padding: 7px;
+	text-decoration: none;
 }
 
 #upVoteButton {
