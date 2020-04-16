@@ -32,7 +32,7 @@ const LoginForm = ({ setUser }) => {
 
 	return (
 		<div id="login-form">
-			{localStorage.token ? null : <Redirect to="/login" />}
+			{localStorage.token ? null : <Redirect to="/" />}
 			<Form onSubmit={(event) => handleSubmit(event)}>
 				<Form.Group controlId="formUsername">
 					<Form.Label>Email address</Form.Label>
