@@ -34,7 +34,7 @@ const RegisterForm = ({ setUser }) => {
 
 	return (
 		<div>
-			{localStorage.token ? null : <Redirect to="/login" />}
+			{localStorage.token ? <Redirect to="/" /> : null}
 			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="formUsername">
 					<Form.Label>Email address</Form.Label>
