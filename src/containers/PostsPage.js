@@ -1,20 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NewPostPage from './NewPostPage.js';
-import PostShow from './PostShow';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NewPostPage from "./NewPostPage.js";
+import PostShow from "./PostShow";
+import UpdatePost from "./UpdatePost.js";
 
 const PostsPage = ({ match }) => {
-	const component = () => {
-		const slug = match.params.slug;
+  const component = () => {
+    const slug = match.params.slug;
 
-		if (slug === 'new') {
-			return <NewPostPage />;
-		} else if (typeof parseInt(slug) === 'number') {
-			return <PostShow id={slug} />;
-		}
-	};
+    if (slug === "new") {
+      return <NewPostPage />;
+    } else if (typeof parseInt(slug) === "number") {
+      return <PostShow id={slug} />;
+    } else if (slug.includes("update")) {
+      return <UpdatePost id={slug}/>;
+    }
+  };
 
-	return component();
+  return component();
 };
 
 export default PostsPage;
