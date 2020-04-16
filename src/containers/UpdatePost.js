@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import GoogleMapsAutoCompleteForm from "../components/GoogleMapsAutoCompleteForm";
 
 function UpdatePost(post) {
-  console.log(post)
+  console.log(post);
   const [currentLink, newLink] = useState(post.article_link);
   const [currentTitle, newTitle] = useState(post.title);
   const [currentContent, newContent] = useState(post.content);
@@ -32,11 +32,15 @@ function UpdatePost(post) {
   };
 
   const handleDelete = (event) => {
-      fetch(`http://localhost:3000/posts/${post.id}`, {
-          method: 'DELETE'
-      })
-
-  }
+    fetch(`http://localhost:3000/posts/${post.id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+  };
 
   return (
     <div className="user-form mx-auto" id="register">
@@ -71,9 +75,9 @@ function UpdatePost(post) {
         <Button variant="primary" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
-        
+
         <Button variant="danger" type="delete" onClick={handleDelete}>
-            Delete Post
+          Delete Post
         </Button>
       </Form>
     </div>
