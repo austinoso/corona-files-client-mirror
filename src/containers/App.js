@@ -1,3 +1,14 @@
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import "../App.css";
+import PostsContainer from "./PostsContainer.js";
+import RegisterPage from "./RegisterPage";
+import LoginPage from "./LoginPage";
+import UserProfiles from "./UserProfiles.js";
+import NavBar from "../components/NavBar.js";
+import PostsPage from "./PostsPage";
+import ErrorBoundary from '../components/ErrorBoundary.js'
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import '../App.css';
