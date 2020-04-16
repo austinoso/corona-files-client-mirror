@@ -31,7 +31,7 @@ function UpdatePost(post) {
       .then(console.log);
   };
 
-  const handleDelete = (event) => {
+  const handleDelete = () => {
     fetch(`http://localhost:3000/posts/${post.id}`, {
       method: "DELETE",
       headers: {
