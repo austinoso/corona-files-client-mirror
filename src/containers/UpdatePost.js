@@ -3,7 +3,6 @@ import { Form, Button } from 'react-bootstrap';
 import GoogleMapsAutoCompleteForm from '../components/GoogleMapsAutoCompleteForm';
 
 const UpdatePost = ({ match }) => {
-	//console.log(post);
 	const [currentLink, newLink] = useState('');
 	const [currentTitle, newTitle] = useState('');
 	const [currentContent, newContent] = useState('');
@@ -41,7 +40,11 @@ const UpdatePost = ({ match }) => {
 				'Content-Type': 'application/json',
 				Accept: 'application/json',
 			},
-		});
+		}) .then(() => {
+            console.log('removed');
+         }).catch(err => {
+           console.error(err)
+         });
 	};
 
 	return (
