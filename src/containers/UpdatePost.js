@@ -58,13 +58,12 @@ const UpdatePost = ({ match }) => {
 					/>
 				</Form.Group>
 
-				<Form.Group>
-					<Form.Label>Edit Address For Your Article: </Form.Label>
-					<GoogleMapsAutoCompleteForm setLocation={newLocation} />
-				</Form.Group>
-
 				<Button variant="primary" type="submit" onClick={handleSubmit}>
 					Submit
+				</Button>
+
+				<Button variant="danger" type="delete" onClick={handleDelete}>
+					Delete Post
 				</Button>
 			</Form>
 		</div>
