@@ -1,40 +1,45 @@
-import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
-import PostCard from "../components/PostCard";
-import PostComments from "./PostComments";
-import CommentForm from "../components/CommentForm";
+import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import PostCard from '../components/PostCard';
+import PostComments from './PostComments';
+import CommentForm from '../components/CommentForm';
+import Spinner from 'react-bootstrap/Spinner';
 
-const PostShow = ({ id }) => {
-  const [post, setPost] = useState(null);
-  const [comments, setComments] = useState(null);
+const PostShow = ({ match }) => {
+	const [post, setPost] = useState(null);
+	const [comments, setComments] = useState(null);
+	const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchPost = () => {
-      return fetch(`http://localhost:3000/posts/${id}`)
-        .then((res) => res.json())
-        .then((post) => {
-          if (!post.error) setPost(post);
-          if (!post.error) setComments(post.comments);
-        });
-    };
+	const id = match.params.id;
 
-    if (!post) fetchPost();
-  }, []);
+	useEffect(() => {
+		const fetchPost = () => {
+			return fetch(`http://localhost:3000/posts/${id}`)
+				.then((res) => res.json())
+				.then((post) => {
+					if (!post.error) setPost(post);
+					if (!post.error) setComments(post.comments);
+					if (post.error) setError(post.error);
+				});
+		};
 
-  const addComment = (comment) => {
-    setComments([comment, ...comments]);
-  };
+		if (!post) fetchPost();
+	}, []);
 
-  // console.log(post);
-  return post ? (
-    <Container>
-      <PostCard post={post} />
-      <CommentForm addComment={addComment} postId={post.id} />
-      <PostComments comments={comments} />
-    </Container>
-  ) : (
-    <h1>Looking for the post...Post was not found</h1>
-  );
+	const addComment = (comment) => {
+		setComments([comment, ...comments]);
+	};
+
+	// console.log(post);
+	return post && !post.error ? (
+		<Container>
+			<PostCard post={post} />
+			<CommentForm addComment={addComment} postId={post.id} />
+			<PostComments comments={comments} />
+		</Container>
+	) : (
+		<Spinner animation="border" variant="light" />
+	);
 };
 
 export default PostShow;
