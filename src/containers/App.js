@@ -8,6 +8,7 @@ import LoginPage from "./LoginPage";
 import UserProfiles from "./UserProfiles.js";
 import NavBar from "../components/NavBar.js";
 import PostsPage from "./PostsPage";
+import UpdatePost from './UpdatePost'
 
 class App extends Component {
   state = {
@@ -66,6 +67,13 @@ class App extends Component {
               <UserProfiles {...routerProps} profiles={this.state.profiles} />
             )}
           />
+          <Route 
+            exact
+            path={`posts/:slug/update`}
+            render={(routerProps) => (
+              <UpdatePost {...routerProps} posts={this.posts} post={this.post}/>
+            )}
+            />
         </div>
       </Router>
     );
