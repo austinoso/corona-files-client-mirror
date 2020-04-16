@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, ButtonGroup } from 'react-bootstrap';
 import LoggedInUser from './nav/LoggedInUser';
-import UserProfiles from '../containers/UserProfiles';
+import { ReactComponent as Logo } from '../virus.svg';
 
 export default function NavBar({ user, setUser }) {
 	return (
 		<Navbar bg="dark" variant="dark" expand="lg">
-			<Navbar.Brand href="/">Corona Files</Navbar.Brand>
+			<Navbar.Brand href="/">
+				<Logo id="logo" />
+				Corona Files
+			</Navbar.Brand>
 			<Navbar.Toggle />
 			<Navbar.Collapse className="justify-content-end">
 				<Nav className="mr-auto">
@@ -20,12 +22,14 @@ export default function NavBar({ user, setUser }) {
 					</>
 				) : (
 					<>
-						<Nav.Link className="btn btn-secondary" href="/login">
-							Login
-						</Nav.Link>
-						<Nav.Link className="btn btn-success" href="/register">
-							Register
-						</Nav.Link>
+						<ButtonGroup>
+							<Nav.Link className="btn btn-secondary" href="/login">
+								Login
+							</Nav.Link>
+							<Nav.Link className="btn btn-success" href="/register">
+								Register
+							</Nav.Link>
+						</ButtonGroup>
 					</>
 				)}
 			</Navbar.Collapse>
