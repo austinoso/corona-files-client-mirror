@@ -1,14 +1,16 @@
-import React from "react";
-import Profile from "../components/Profile.js";
+import React from 'react';
+import Profile from '../components/Profile.js';
 
 const UserProfiles = ({ profiles }) => {
-  return (
-    <div classname="container">
-      {profiles.map((profile) => (
-        <Profile profile={profile} />
-      ))}
-    </div>
-  );
+	return (
+		<div classname="container">
+			<h1>{localStorage.username}'s Posts</h1>
+			{console.log(profiles)}
+			{/* {profiles.map((profile) => (
+				<Profile profile={profile} />
+			))} */}
+		</div>
+	);
 };
 
 export default UserProfiles;
