@@ -11,7 +11,7 @@ function UpdatePost(post) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:3000/posts/${post.id}/`, {
+    fetch(`http://localhost:3000/posts/${post.id}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
@@ -30,6 +30,13 @@ function UpdatePost(post) {
       .then((resp) => resp.json())
       .then(console.log);
   };
+
+  const handleDelete = (event) => {
+      fetch(`http://localhost:3000/posts/${post.id}`, {
+          method: 'DELETE'
+      })
+
+  }
 
   return (
     <div className="user-form mx-auto" id="register">
@@ -63,6 +70,10 @@ function UpdatePost(post) {
 
         <Button variant="primary" type="submit" onClick={handleSubmit}>
           Submit
+        </Button>
+        
+        <Button variant="danger" type="delete" onClick={handleDelete}>
+            Delete Post
         </Button>
       </Form>
     </div>
