@@ -33,6 +33,17 @@ const UpdatePost = ({ match }) => {
 			.then(console.log);
 	};
 
+	const handleDelete = () => {
+		fetch(`http://localhost:3000/posts/${match.params.id}`, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${localStorage.token}`,
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+		});
+	};
+
 	return (
 		<div className="user-form mx-auto" id="register">
 			<h1>Edit Post</h1>

@@ -5,9 +5,10 @@ const UserProfiles = ({ profiles }) => {
 	return (
 		<div classname="container">
 			<h1>{localStorage.username}'s Posts</h1>
-			{profiles.map((profile) => (
+			{console.log(profiles)}
+			{/* {profiles.map((profile) => (
 				<Profile profile={profile} />
-			))}
+			))} */}
 		</div>
 	);
 };

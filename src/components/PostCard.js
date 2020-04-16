@@ -13,9 +13,9 @@ const Post = (props) => {
 	};
 
 	const postStatus = () => {
-		if (props.post.score > 5) {
+		if (props.post.score >= 1) {
 			return 'TRUE';
-		} else if (props.post.score < -5) {
+		} else if (props.post.score <= -1) {
 			return 'FALSE';
 		} else {
 			return 'Undetermined';

@@ -14,7 +14,7 @@ export default function NavBar({ user, setUser }) {
 			<Navbar.Collapse className="justify-content-end">
 				<Nav className="mr-auto">
 					<Nav.Link href="/">Home</Nav.Link>
-					<Nav.Link href="/posts/new">New Post</Nav.Link>
+					<Nav.Link href="/posts/new">Create Post</Nav.Link>
 				</Nav>
 				{!!user.username ? (
 					<>

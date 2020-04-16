@@ -3,10 +3,12 @@ import { Container } from 'react-bootstrap';
 import PostCard from '../components/PostCard';
 import PostComments from './PostComments';
 import CommentForm from '../components/CommentForm';
+import Spinner from 'react-bootstrap/Spinner';
 
 const PostShow = ({ match }) => {
 	const [post, setPost] = useState(null);
 	const [comments, setComments] = useState(null);
+	const [error, setError] = useState(null);
 
 	const id = match.params.id;
 
@@ -17,6 +19,7 @@ const PostShow = ({ match }) => {
 				.then((post) => {
 					if (!post.error) setPost(post);
 					if (!post.error) setComments(post.comments);
+					if (post.error) setError(post.error);
 				});
 		};
 
@@ -28,14 +31,14 @@ const PostShow = ({ match }) => {
 	};
 
 	// console.log(post);
-	return post ? (
+	return post && !post.error ? (
 		<Container>
 			<PostCard post={post} />
 			<CommentForm addComment={addComment} postId={post.id} />
 			<PostComments comments={comments} />
 		</Container>
 	) : (
-		<h1>Looking for the post...Post was not found</h1>
+		<Spinner animation="border" variant="light" />
 	);
 };
 
