@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import LoggedInUser from "./nav/LoggedInUser";
-import UserProfiles from "../containers/UserProfiles";
 
 export default function NavBar({ user, setUser }) {
   return (

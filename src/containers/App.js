@@ -8,6 +8,7 @@ import LoginPage from "./LoginPage";
 import UserProfiles from "./UserProfiles.js";
 import NavBar from "../components/NavBar.js";
 import PostsPage from "./PostsPage";
+import ErrorBoundary from '../components/ErrorBoundary.js'
 
 class App extends Component {
   state = {
@@ -56,14 +57,14 @@ class App extends Component {
             exact
             path={`/posts/:slug`}
             render={(routerProps) => (
-              <PostsPage {...routerProps} posts={this.posts} />
+              <PostsPage {...routerProps} posts={this.posts} user={this.user}/>
             )}
           />
           <Route
             exact
             path={`/profile`}
             render={(routerProps) => (
-              <UserProfiles {...routerProps} profiles={this.state.profiles} />
+              <UserProfiles {...routerProps} posts={this.posts} user={this.setUser} />
             )}
           />
         </div>
