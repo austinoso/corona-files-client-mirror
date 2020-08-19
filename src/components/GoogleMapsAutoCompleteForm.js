@@ -3,7 +3,7 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import Geocode from 'react-geocode';
 
 const GoogleMapsAutoCompleteForm = ({ setLocation }) => {
-	const apiKey = 'AIzaSyALGimu9FVrBroqCrT2FyFowHkfWXZXDHs';
+	const apiKey = 'ADD KEY';
 
 	const currentLocation = (location) => {
 		Geocode.setApiKey(apiKey);
